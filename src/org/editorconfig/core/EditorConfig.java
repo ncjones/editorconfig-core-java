@@ -84,13 +84,13 @@ public class EditorConfig {
       boolean root = false;
       String dir = new File(filePath).getParent();
       while (dir != null && !root) {
-        String configPath = dir + "/" + configFilename;
+        String configPath = dir + File.separator + configFilename;
         if (new File(configPath).exists()) {
           FileInputStream stream = new FileInputStream(configPath);
           InputStreamReader reader = new InputStreamReader(stream, "UTF-8");
           BufferedReader bufferedReader = new BufferedReader(reader);
           try {
-            root = parseFile(bufferedReader, dir + "/", filePath, options);
+            root = parseFile(bufferedReader, dir + File.separator, filePath, options);
           } finally {
             bufferedReader.close();
             reader.close();
